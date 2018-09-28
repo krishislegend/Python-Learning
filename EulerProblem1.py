@@ -5,10 +5,11 @@ def SumOfMultp():
 	i = 1
 	Tot = 0
 	TotalNumber = 1000	
-	while i <= TotalNumber:
-		if (IsDivisible(i) == 1) 
+	while i < TotalNumber:
+		if (IsDivisible(i) == 1):
 			Tot += i
 		i += 1
+	return Tot
 
 # Method to check if number is divisible by 3 or 5
 def IsDivisible(i):
@@ -17,4 +18,4 @@ def IsDivisible(i):
 	else:
 		return 0
 
-print("The total sum of all the multiples of 3 or 5 below 1000", Tot)
+print("The total sum of all the multiples of 3 or 5 below 1000", SumOfMultp())
