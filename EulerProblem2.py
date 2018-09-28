@@ -4,14 +4,11 @@
 def generateFib():
     i = 1
     j = 2
-    k = 2
     count = 0 
     while(i <= 4000000):
-        k = j
         if (j % 2 == 0):
             count += j
-        j += i
-        i = k
+        i, j= j, i+j
     print("The sum of Fibonnaci even numbers upto 4 million is", count)
 
 generateFib()
