@@ -16,7 +16,6 @@ def primefactorial(number):
 # Function to get the prime number list
 def getprime(j):
     i = 1
-    primeflag = 'Y'
     while i<= j:
         if i!= 1 and i!= j:
             if i %j == 0:
