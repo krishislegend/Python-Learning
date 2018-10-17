@@ -60,16 +60,22 @@ transition vote (proposal: Uint256)
             code : already_Voted};
     msgs = one_msg msg;
     send msgs
-  end 
-  tmp1 = builtin lt proposal numberofProp;
-  match tmp1 with
-  | False =>
-    voted = builtin put Voted _sender True;
-    votes = builtin put Votes _sender proposal;
-    numofprop = builtin get voteCounts proposal;
-    voteweight = builtin get voterWeight _sender;
-    totalprop = builtin add numbofprop voteweight;
-    voutecounts = builtin put voteCounts proposal TotalProp;
+  | False => 
+    tmp1 = builtin lt proposal numberofProp;
+    match tmp1 with
+    | True =>
+      msg  = {_tag : "Already Voted"; _recipient : _sender; _amount : Uint128 0;
+              code : already_Voted};
+      msgs = one_msg msg;
+      send msgs
+    | False =>
+      voted = builtin put Voted _sender True;
+      votes = builtin put Votes _sender proposal;
+      numofprop = builtin get voteCounts proposal;
+      voteweight = builtin get voterWeight _sender;
+      totalprop = builtin add numbofprop voteweight;
+      voutecounts = builtin put voteCounts proposal TotalProp;
+    end 
   end     
 end
 
